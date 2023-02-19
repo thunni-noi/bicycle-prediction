@@ -1,8 +1,8 @@
 from pypmml import Model
-from pathlib import Path
+import pathlib
 
-path = Path(__file__).parent / "model\Decision70.pmml"
-model = Model.load(path)
+pathlib.WindowsPath = pathlib.PosixPath
+model = Model.load('model\Decision70.pmml')
 #acceptable list
 seasonList = ['Spring','Summer','Fall','Winter']
 weatherList = ['Clear','Cloudy','Rain','Heavy Rain']
