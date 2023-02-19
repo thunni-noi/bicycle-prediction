@@ -1,6 +1,6 @@
 from pypmml import Model
 
-model = Model.load('Decision70.pmml')
+model = Model.load('model\Decision70.pmml')
 #acceptable list
 seasonList = ['Spring','Summer','Fall','Winter']
 weatherList = ['Clear','Cloudy','Rain','Heavy Rain']
