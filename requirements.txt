@@ -1,0 +1,7 @@
+geopandas==0.12.2
+geopy==2.3.0
+pandas==1.5.3
+pypmml==0.9.17
+requests==2.28.2
+shapely==2.0.1
+streamlit==1.18.1
