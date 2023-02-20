@@ -8,9 +8,14 @@ from datetime import datetime, time
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
 from run_model import start_predict
+import pathlib
+import base64
+
+if st.secrets['current_platform'] != "pc" :
+    pathlib.WindowsPath = pathlib.PosixPath
 
 cur_month = datetime.now().month
-cur_hr = (int(datetime.now().hour)+ 8) % 24 #utc+8
+cur_hr = cur_hr = (int(datetime.now().hour)+ 8) % 24 #utc+8
 
 geolocator = Nominatim(user_agent='thunninoi')
 geocode = RateLimiter(geolocator.geocode, min_delay_seconds=1)
@@ -22,7 +27,7 @@ if 'customMode' not in st.session_state: st.session_state['customMode'] = ""
 workingday = False
 
 st.set_page_config(
-    page_title="Bicycle-Prediction",
+    page_title="Bicycle prediction",
     page_icon='https://s3-ap-northeast-1.amazonaws.com/killy-image/linestamp/1f/1f13/1f131746571cc91986f8b868ed2946789402c741',
     layout='wide',
     menu_items={
@@ -34,10 +39,19 @@ st.set_page_config(
 
 def clearPrediction() :
     st.session_state['prediction'] = ""
-
+    
+def show_pdf(file_path):
+    with open(file_path,"rb") as f:
+        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+    #print(base64_pdf)
+    pdf_display = F'<iframe src="data:application/pdf;base64,{base64_pdf}" width="1080" height="720" type="application/pdf"></iframe>'
+    st.markdown(pdf_display, unsafe_allow_html=True)
 #st.write(st.session_state['weather'])
 st.title('#Bicycle usage prediction model!')
-st.image('https://media.discordapp.net/attachments/540130478653702154/1076875909564473385/Michaelpatakos_greecebicycleseacalmfancypop_artvector_7023ffdf-6ae1-4499-9809-9513323c8c39.png?width=678&height=678')
+
+show_pdf('slideshow_compressed.pdf')
+#st.image('https://media.discordapp.net/attachments/540130478653702154/1076875909564473385/Michaelpatakos_greecebicycleseacalmfancypop_artvector_7023ffdf-6ae1-4499-9809-9513323c8c39.png?width=678&height=678')
+
 st.header('Welcome to bicycle usage prediction website!')
 st.subheader('Project by  ')
 st.subheader(' > Jittaraboon Sapsintweelap No.23')

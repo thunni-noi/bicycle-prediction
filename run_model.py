@@ -1,7 +1,9 @@
 from pypmml import Model
+import streamlit as st
 import pathlib
 
-pathlib.WindowsPath = pathlib.PosixPath
+if st.secrets['current_platform'] != "pc" :
+    pathlib.WindowsPath = pathlib.PosixPath
 model = Model.load('model/Decision70.pmml')
 #acceptable list
 seasonList = ['Spring','Summer','Fall','Winter']
