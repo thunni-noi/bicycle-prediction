@@ -3,7 +3,6 @@ from shapely.geometry import Point,Polygon
 import geopandas as gpd
 import pandas as pd
 from weather_api import get_weather
-import geopy
 from datetime import datetime, time
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
@@ -50,9 +49,10 @@ def show_pdf(file_path):
 st.title('#Bicycle usage prediction model!')
 
 if st.secrets['current_platform'] == 'pc' :
-    show_pdf('slideshow/slideshow_compressed.pdf') 
+    show_pdf('slideshow/slideshow-compressed.pdf') 
 else:
     slideshow_vdo = open("slideshow/slideshow.mp4", 'rb')
+    st.write('Presentation Video :')
     st.video(slideshow_vdo.read())
 #st.image('https://media.discordapp.net/attachments/540130478653702154/1076875909564473385/Michaelpatakos_greecebicycleseacalmfancypop_artvector_7023ffdf-6ae1-4499-9809-9513323c8c39.png?width=678&height=678')
 
