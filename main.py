@@ -10,7 +10,7 @@ from geopy.extra.rate_limiter import RateLimiter
 from run_model import start_predict
 
 cur_month = datetime.now().month
-cur_hr = datetime.now().hour
+cur_hr = int(datetime.now().hour)+ 8 #utc+8
 
 geolocator = Nominatim(user_agent='thunninoi')
 geocode = RateLimiter(geolocator.geocode, min_delay_seconds=1)
