@@ -61,8 +61,7 @@ if not st.session_state['customMode']:
             col1, col2, col3 = st.sidebar.columns(3)
             weatherData = get_weather(lat, lon)
             #session state
-            if st.session_state['weather'] == "":
-                st.session_state['weather'] = weatherData
+            st.session_state['weather'] = weatherData
             if sidecol2.button('Predict'):
                 predicted = start_predict(weatherData, cur_month, cur_hr, workingday)
                 st.session_state['prediction'] = predicted
