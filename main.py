@@ -10,7 +10,7 @@ from geopy.extra.rate_limiter import RateLimiter
 from run_model import start_predict
 
 cur_month = datetime.now().month
-cur_hr = int(datetime.now().hour)+ 8 #utc+8
+cur_hr = (int(datetime.now().hour)+ 8) % 24 #utc+8
 
 geolocator = Nominatim(user_agent='thunninoi')
 geocode = RateLimiter(geolocator.geocode, min_delay_seconds=1)
@@ -20,6 +20,17 @@ if 'weather' not in st.session_state: st.session_state['weather'] = ""
 if 'prediction' not in st.session_state: st.session_state['prediction'] = ""
 if 'customMode' not in st.session_state: st.session_state['customMode'] = ""
 workingday = False
+
+st.set_page_config(
+    page_title="Bicycle-Prediction",
+    page_icon='https://s3-ap-northeast-1.amazonaws.com/killy-image/linestamp/1f/1f13/1f131746571cc91986f8b868ed2946789402c741',
+    layout='wide',
+    menu_items={
+        'Report a bug' : 'https://github.com/thunni-noi/bicycle-prediction/issues',
+        'About' : 'https://github.com/thunni-noi/bicycle-prediction'
+    }
+)
+
 
 def clearPrediction() :
     st.session_state['prediction'] = ""

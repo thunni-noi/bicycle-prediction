@@ -1,6 +1,7 @@
 import requests
 import json
-API_KEY = "8193ea944a9387647ef2164dc0292bd4"
+import streamlit as st
+API_KEY = st.secrets['openweather_api']
 
 weatherConvert = {
     'Clear' : ["Clear"],
