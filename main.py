@@ -94,6 +94,8 @@ if not st.session_state['customMode']:
             if sidecol2.button('Predict'):
                 predicted = start_predict(weatherData, cur_month, cur_hr, workingday)
                 st.session_state['prediction'] = predicted
+            
+            #st.sidebar.write(f'Weather status : {weatherData["weathersit"]}')
             col1.metric("Temperature", f"{weatherData['temp']}°C")
             
             col2.metric("Wind (Meters per hour)", f"{weatherData['windspeed']}mph")
@@ -101,6 +103,10 @@ if not st.session_state['customMode']:
             col3.metric("Humidity", f"{weatherData['hum']}%")
             col2.text(f'Hour : {cur_hr}')
             col1.text(f'Month : {cur_month}')
+            w1, w2 = st.sidebar.columns([1,3])
+            w1.metric("Weather status", weatherData['weathersit'])
+            image_url = f"http://openweathermap.org/img/wn/{weatherData['icon']}@2x.png"
+            w2.image(image_url)
             workingday = col3.checkbox('Workingday?' ,value = False,)
         if st.session_state['prediction'] != "":
             st.sidebar.metric("Prediction", st.session_state['prediction']['prediction(cluster)'])

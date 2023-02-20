@@ -16,6 +16,7 @@ def get_weather(lat, lon):
 
     weatherData = json.loads(response.text)
     tempweathersit = weatherData['weather'][0]['main']
+    icon = weatherData['weather'][0]['icon']
     temp = round(weatherData['main']['temp'], 2)
     hum = weatherData['main']['humidity']
     windspeed = round(weatherData['wind']['speed'], 4)
@@ -23,7 +24,7 @@ def get_weather(lat, lon):
         if tempweathersit in replacement:
             weathersit = word
             break
-    return {'weathersit':weathersit, 'temp':temp,'hum':hum,'windspeed':windspeed}
+    return {'weathersit':weathersit, 'temp':temp,'hum':hum,'windspeed':windspeed, 'icon':icon}
 
 
 #13.74478887431261, 100.56404536486895
