@@ -47,7 +47,9 @@ def show_pdf(file_path):
     st.markdown(pdf_display, unsafe_allow_html=True)
 #st.write(st.session_state['weather'])
 st.title('#Bicycle usage prediction model!')
-st.subheader("Web App นี้เกิดจากการนำ dataset บน kaggle มาทำเป็น decision tree model เพื่อใช้ทำนายจำนวนคนที่จะใช้งานระบบเช่าจักรยาน โดยมีตัวแปรเป็น สถานที่ และสภาพอากาศต่างๆ")
+st.subheader('Summary')
+st.write("Web App นี้เกิดจากการนำ dataset บน kaggle มาทำเป็น decision tree model มีความแม่นยำอยู่ที่ 70% เรามีความตั้งใจที่จะนำ model ตัวนี้มาใช้ทำนายจำนวนคนที่จะใช้งานระบบเช่าจักรยาน โดยมีตัวแปรเป็น สถานที่ และสภาพอากาศต่างๆ เราได้ดึงข้อมูลสภาพอากาศต่างๆ มาจาก API ของ OpenWeather โดยมีเป้าหมายเพื่อที่จะทำนายปริมาณคนที่จะใช้งานจักรยานในพื้นที่ๆนั้นเพื่อที่จะได้วางแผนล่วงหน้าเพื่อโอกาสมากที่สุดที่สามารถทำกำไรได้")
+st.write('ข้อมูลโดยละเอียดสามารถอ่านได้บน[รายงาน](https://github.com/thunni-noi/bicycle-prediction/blob/main/slideshow/Bicycle-prediction-report.pdf)')
 st.subheader("วิธีการใช้งาน:")
 st.write("  1. เลือกวิธีในการรับข้อมูลมาประมวลผล หากต้องการเรียกข้อมูลอัตโนมัติให้เลือกสถานที่ผ่านช่อง 'Location' แล้วกด 'Fetch weather data' หากต้องการจะกรอกข้อมูลเองให้กดที่ช่อง 'Enable custom parameter'")
 st.write("  2. หากวันนั้นเป็นวันทำงานให้กดที่ช่อง 'Workingday'")
@@ -67,6 +69,7 @@ st.subheader(' > Jittaraboon Sapsintweelap No.23')
 st.subheader(' > Tanapon Thongchamnong No.39')
                 
 st.markdown('Data is pulled from [Bike Sharing Dataset](https://www.kaggle.com/datasets/lakshmi25npathi/bike-sharing-dataset)')
+st.markdown('Source code is available at [GitHub](https://github.com/thunni-noi/bicycle-prediction)')
 st.session_state['customMode'] = st.sidebar.checkbox('Enable custom parameter?', value= False, on_change= clearPrediction())
 if not st.session_state['customMode']:
     location_input = st.sidebar.text_input('Location (Input location name or coordinate)', "มหาวิทยาลัยศรีนครินทรวิโรฒ ประสานมิตร")
