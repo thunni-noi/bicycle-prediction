@@ -47,6 +47,11 @@ def show_pdf(file_path):
     st.markdown(pdf_display, unsafe_allow_html=True)
 #st.write(st.session_state['weather'])
 st.title('#Bicycle usage prediction model!')
+st.subheader("Web App นี้เกิดจากการนำ dataset บน kaggle มาทำเป็น decision tree model เพื่อใช้ทำนายจำนวนคนที่จะใช้งานระบบเช่าจักรยาน โดยมีตัวแปรเป็น สถานที่ และสภาพอากาศต่างๆ")
+st.subheader("วิธีการใช้งาน:")
+st.write("  1. เลือกวิธีในการรับข้อมูลมาประมวลผล หากต้องการเรียกข้อมูลอัตโนมัติให้เลือกสถานที่ผ่านช่อง 'Location' แล้วกด 'Fetch weather data' หากต้องการจะกรอกข้อมูลเองให้กดที่ช่อง 'Enable custom parameter'")
+st.write("  2. หากวันนั้นเป็นวันทำงานให้กดที่ช่อง 'Workingday'")
+st.write("  3. กด 'Predict' เพื่อเริ่มทำนาย")
 
 if st.secrets['current_platform'] == 'pc' :
     show_pdf('slideshow/slideshow-compressed.pdf') 
