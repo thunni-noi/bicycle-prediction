@@ -49,7 +49,7 @@ def show_pdf(file_path):
 st.title('#Bicycle usage prediction model!')
 st.subheader('Summary')
 st.write("Web App นี้เกิดจากการนำ dataset บน kaggle มาทำเป็น decision tree model มีความแม่นยำอยู่ที่ 70% เรามีความตั้งใจที่จะนำ model ตัวนี้มาใช้ทำนายจำนวนคนที่จะใช้งานระบบเช่าจักรยาน โดยมีตัวแปรเป็น สถานที่ และสภาพอากาศต่างๆ เราได้ดึงข้อมูลสภาพอากาศต่างๆ มาจาก API ของ OpenWeather โดยมีเป้าหมายเพื่อที่จะทำนายปริมาณคนที่จะใช้งานจักรยานในพื้นที่ๆนั้นเพื่อที่จะได้วางแผนล่วงหน้าเพื่อโอกาสมากที่สุดที่สามารถทำกำไรได้")
-st.write('ข้อมูลโดยละเอียดสามารถอ่านได้บน[รายงาน](https://github.com/thunni-noi/bicycle-prediction/blob/main/slideshow/Bicycle-prediction-report.pdf)')
+st.write('ข้อมูลโดยละเอียดสามารถอ่านได้บน[รายงานเวอร์ชันเต็ม](https://github.com/thunni-noi/bicycle-prediction/blob/main/slideshow/Bicycle-prediction-report-v2.pdf)')
 st.subheader("วิธีการใช้งาน:")
 st.write("  1. เลือกวิธีในการรับข้อมูลมาประมวลผล หากต้องการเรียกข้อมูลอัตโนมัติให้เลือกสถานที่ผ่านช่อง 'Location' แล้วกด 'Fetch weather data' หากต้องการจะกรอกข้อมูลเองให้กดที่ช่อง 'Enable custom parameter'")
 st.write("  2. หากวันนั้นเป็นวันทำงานให้กดที่ช่อง 'Workingday'")
