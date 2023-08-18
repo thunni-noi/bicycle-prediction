@@ -1,17 +1,10 @@
-import pickle
-from google_drive_downloader import GoogleDriveDownloader as gdd
+from pypmml import Model
 import streamlit as st
 import pathlib
 
 if st.secrets['current_platform'] != "pc" :
     pathlib.WindowsPath = pathlib.PosixPath
-    
-    
-model_path = pathlib.Path('model/main_model.pkl')
-if not model_path.exists():
-    gdd.download_file_from_google_drive('1-_ASCNLnejh4BcERp8vPoFxPAU_ZedqT', model_path)
-
-model = pickle.load(open(model_path, 'rb'))
+model = Model.load('model/Decision70.pmml')
 #acceptable list
 seasonList = ['Spring','Summer','Fall','Winter']
 weatherList = ['Clear','Cloudy','Rain','Heavy Rain']
@@ -30,8 +23,7 @@ def start_predict(weatherData, month, hr, workingday=True):
     return prediction
 
 
-
 if __name__ == "__main__":
-    #test = {'season' : seasonList[0], 'mnth' : 5, 'hr': 18, 'workingday' : "True", "weathersit":weatherList[0], 'temp':0.4, 'hum':0.4, 'windspeed' : 0.5, 'id' : 0}
-    print(model.predict([[0.070947,1.525049,-1.692812,0.314403,-1.440639]]))
-    print('OK')
+    test = {'season' : seasonList[0], 'mnth' : 5, 'hr': 18, 'workingday' : "True", "weathersit":weatherList[0], 'temp':0.4, 'hum':0.4, 'windspeed' : 0.5, 'id' : 0}
+    prediction = model.predict(test)
+    print(prediction['prediction(cluster)'])
