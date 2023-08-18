@@ -15,17 +15,22 @@ def get_weather(lat, lon):
     response = requests.request("GET", url, headers={}, data={})
 
     weatherData = json.loads(response.text)
-    tempweathersit = weatherData['weather'][0]['main']
-    icon = weatherData['weather'][0]['icon']
+    #tempweathersit = weatherData['weather'][0]['main']
+    #icon = weatherData['weather'][0]['icon']
     temp = round(weatherData['main']['temp'], 2)
     hum = weatherData['main']['humidity']
-    windspeed = round(weatherData['wind']['speed'], 4)
-    for word,replacement in weatherConvert.items():
-        if tempweathersit in replacement:
-            weathersit = word
-            break
-    return {'weathersit':weathersit, 'temp':temp,'hum':hum,'windspeed':windspeed, 'icon':icon}
-
+    pressure = weatherData['main']['pressure']
+    #windspeed = round(weatherData['wind']['speed'], 4)
+    #for word,replacement in weatherConvert.items():
+    #    if tempweathersit in replacement:
+    #        weathersit = word
+    #       break
+    #return {'weathersit':weathersit, 'temp':temp,'hum':hum,'windspeed':windspeed, 'icon':icon}
+    return {
+        'temperature' : temp,
+        'humidity' : hum,
+        'pressure' : pressure
+    }
 
 #13.74478887431261, 100.56404536486895
 
